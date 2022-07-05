@@ -7,7 +7,8 @@ import br.com.zup.movieflix.moviedetail.model.MovieWithDirectorModel
 
 class MovieDetailRepository (val dataSource: DirectorLocalDataSource) {
 
-    fun getMovieWithDirector(movie: Movie) : MovieWithDirectorModel{
+    fun getMovieWithDirector(movie: Movie, switchCheck: Boolean) : MovieWithDirectorModel{
+        movie.favorite = switchCheck
         val listaDeDiretores = dataSource.directorList
         var diretor = DirectorModel("","")
         listaDeDiretores.forEach {
